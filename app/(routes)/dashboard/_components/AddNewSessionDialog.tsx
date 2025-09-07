@@ -135,12 +135,14 @@ import axios from "axios";
 import { use } from "motion/react-client";
 import DoctorAgentCard, { doctorAgent } from "./DoctorAgentCard";
 import SuggestedDoctorCard from "./SuggestedDoctorCard";
+import { useRouter } from "next/navigation";
 
 function AddNewSessionDialog() {
   const [note, setNote] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [suggestedDoctors, setSuggestedDoctors] = useState<doctorAgent[]>([]);
   const [selectedDoctor, setSelectedDoctor] = useState<doctorAgent>();
+  const router = useRouter();
 
   const OnClickNext = async () => {
     setLoading(true);
@@ -187,9 +189,8 @@ function AddNewSessionDialog() {
       console.log("Session creation result:", result.data);
       
       if (result.data?.sessionId) {
-        console.log("Session created successfully with ID:", result.data.sessionId);
-        // TODO: Navigate to the chat page or close dialog
-        // For now, you might want to close the dialog or navigate to chat
+        console.log("Session created successfully with ID:", );
+        router.push('/dashboard/medical-agent/'+result.data.sessionId);
       } else {
         console.error("No session ID returned");
       }
