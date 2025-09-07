@@ -46,7 +46,37 @@ function MedicalVoiceAgent() {
   const StarCall = () => {
     const vapi = new Vapi(process.env.NEXT_PUBLIC_VAPI_API_KEY!);
     setVapiInstance(vapi);
-    vapi.start(process.env.NEXT_PUBLIC_VAPI_VOICE_ASSISTANT_ID);
+
+
+    const VapiAgentConfig = {
+      name: 'AI Medical Doctor Voice Agent',
+      firstMessage: "Hi there! I'm your AI Medical Assistant. I'm here to help you. Can you please tell me full name and age",
+      transcriber: {
+        provider: 'assembly-ai',
+        language: 'en'
+      },
+      voice: {
+        provider: 'playht',
+        voiceId: sessionDetail?.selectedDoctor?.voiceId
+      },
+      model: {
+        provider: 'google',
+        model: 'gemini-2.0-flash',
+        messages: [
+          {
+            role:'system',
+            content: sessionDetail?.selectedDoctor?.agentPrompt
+          }
+        ]
+      }
+    };
+
+
+
+
+
+   //@ts-ignore
+    vapi.start(VapiAgentConfig);
     // Listen for events
     vapi.on("call-start", () => {
       console.log("Call started");
