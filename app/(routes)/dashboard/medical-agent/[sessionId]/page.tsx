@@ -53,13 +53,14 @@ function MedicalVoiceAgent() {
 
     const VapiAgentConfig = {
       name: 'AI Medical Doctor Voice Agent',
-      firstMessage: "Hi there! I'm your AI Medical Assistant. I'm here to help you. Can you please tell me full name and age",
+      firstMessage: "Hi I'm your AI Medical Assistant. I'm here to help you. Can you please tell me full name and age",
       transcriber: {
         provider: 'assembly-ai',
         language: 'en'
       },
       voice: {
-        provider: 'playht',
+        cachingEnabled: true,
+        provider: 'deepgram',
         voiceId: sessionDetail?.selectedDoctor?.voiceId
       },
       model: {
