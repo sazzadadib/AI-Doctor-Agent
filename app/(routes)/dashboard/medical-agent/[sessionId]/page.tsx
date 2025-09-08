@@ -1,12 +1,13 @@
 "use client";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { doctorAgent } from "../../_components/DoctorAgentCard";
-import { Circle, PhoneCall, PhoneOff } from "lucide-react";
+import { Circle, Loader, PhoneCall, PhoneOff } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Vapi from "@vapi-ai/web";
+import { toast } from "sonner";
 
 type SessionDetail = {
   id: number;
@@ -30,6 +31,8 @@ function MedicalVoiceAgent() {
   const [currentRoll, setCurrentRole] = useState<string | null>();
   const [liveTranscript, setLiveTranscript] = useState<string>();
   const [messages, setMessages] = useState<messages[]>([]);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     sessionId && GetSessionDetails();
@@ -115,22 +118,42 @@ function MedicalVoiceAgent() {
     });
   };
 
-  const endCall = () => {
+  const endCall = async() => {
+    const result =  await GenerateReport();
     if (!vapiInstance) return;
-    console.log("Ending Call....");
     //stop call
     vapiInstance.stop();
-
-    //extra
-    vapiInstance.off("call-start");
-    vapiInstance.off("call-end");
-    vapiInstance.off("message");
-
+    // vapiInstance.off('call-start');
+    // vapiInstance.off('call-end');
+    // vapiInstance.off('message');
+    // vapiInstance.off('speech-start');
+    // vapiInstance.off('speech-end');
+    
+    
     //reset call state
     setCallStarted(false);
     setVapiInstance(null);
-  };
 
+    toast.success('Your report is generated!');
+    router.replace('/dashboard');
+    
+    
+    console.log("Ending Call....");
+  };
+  
+  const GenerateReport = async()=>{
+    setLoading(true);
+    const result = await axios.post('/api/medical-report',{
+      messages:messages,
+      sessionDetail:sessionDetail,
+      sessionId:sessionId
+    })
+    
+    console.log(result.data);
+    setLoading(false);
+    return result.data;
+  }
+  
   return (
     <div className="p-5 border rounded-3xl bg-secondary">
       <div className="flex justify-between items-center">
@@ -170,14 +193,14 @@ function MedicalVoiceAgent() {
             )}
           </div>
           {!callStarted ? (
-            <Button className="mt-20" onClick={StarCall}>
-              {" "}
-              <PhoneCall /> Start Call{" "}
+            <Button className="mt-20" onClick={StarCall} disabled={loading}>
+               {loading ? <Loader className='animate-spin'/>: <PhoneOff /> }
+                Start Call
             </Button>
           ) : (
-            <Button variant={"destructive"} onClick={endCall}>
-              {" "}
-              <PhoneOff /> Disconnect{" "}
+            <Button variant={"destructive"} onClick={endCall} disabled={loading}>
+              {loading ? <Loader className='animate-spin'/>: <PhoneOff /> }
+               Disconnect
             </Button>
           )}
         </div>
@@ -187,3 +210,7 @@ function MedicalVoiceAgent() {
 }
 
 export default MedicalVoiceAgent;
+function setLoading(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+
