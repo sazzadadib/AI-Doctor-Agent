@@ -29,7 +29,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Find Doctors", href: "/doctors" },
-    { name: "Services", href: "/services" },
+    { name: "Reports", href: "/dashboard/history" },
     { name: "Health Tips", href: "/health-tips" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
