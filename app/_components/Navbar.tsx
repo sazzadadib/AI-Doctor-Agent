@@ -31,7 +31,7 @@ export default function Navbar() {
     { name: "Find Doctors", href: "/doctors" },
     { name: "Reports", href: "/dashboard/history" },
     { name: "Health Tips", href: "/health-tips" },
-    { name: "About", href: "/about" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
   ];
 
