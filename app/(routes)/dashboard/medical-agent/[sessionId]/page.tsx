@@ -9,17 +9,12 @@ import {
   PhoneCall, 
   PhoneOff, 
   Mic, 
-  MicOff,
   User,
   Bot,
   Activity,
   Clock,
-  FileText,
   Volume2,
-  VolumeX,
   Phone,
-  Pause,
-  Play,
   MessageCircle,
   Stethoscope
 } from "lucide-react";

@@ -1,46 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
+import { steps } from "@/data/homepage";
 
 export default function HowItWorksSection() {
-  const steps = [
-    {
-      number: "01",
-      title: "Describe Your Problem",
-      description: "Tell us about your symptoms, health concerns, or the type of medical assistance you need.",
-      icon: "📝",
-      color: "from-blue-500 to-blue-600",
-    },
-    {
-      number: "02", 
-      title: "Find Your Doctor",
-      description: "Our AI analyzes your needs and suggests the best-matched specialists, or choose any doctor directly.",
-      icon: "👨‍⚕️",
-      color: "from-green-500 to-green-600",
-    },
-    {
-      number: "03",
-      title: "Real-time Consultation",
-      description: "Chat with your selected AI doctor in real-time, discuss symptoms, and get professional advice.",
-      icon: "💬",
-      color: "from-purple-500 to-purple-600",
-    },
-    {
-      number: "04",
-      title: "Get Treatment Plan",
-      description: "Receive personalized medicine recommendations, lifestyle guidelines, and follow-up instructions.",
-      icon: "💊",
-      color: "from-orange-500 to-orange-600",
-    },
-    {
-      number: "05",
-      title: "Download Report",
-      description: "Get a comprehensive medical report automatically generated with all consultation details and recommendations.",
-      icon: "📋",
-      color: "from-red-500 to-red-600",
-    },
-  ];
-
+  
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4">

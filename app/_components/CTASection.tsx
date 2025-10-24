@@ -3,17 +3,10 @@
 import { motion } from "motion/react";
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { benefits } from "@/data/homepage";
 
 export default function CTASection() {
   const { user } = useUser();
-
-  const benefits = [
-    { icon: "⚡", text: "Instant consultation" },
-    { icon: "🎯", text: "Accurate diagnosis" },
-    { icon: "💊", text: "Personalized treatment" },
-    { icon: "📱", text: "Mobile accessible" },
-  ];
-
   return (
     <section className="relative py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 overflow-hidden">
       {/* Animated background elements */}

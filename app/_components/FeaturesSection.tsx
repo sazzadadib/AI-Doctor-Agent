@@ -1,47 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
+import { features } from "@/data/homepage";
 
 export default function FeaturesSection() {
-  const features = [
-    {
-      icon: "🔍",
-      title: "Smart Doctor Search",
-      description: "Find the perfect specialist based on your symptoms and medical needs with our AI-powered search.",
-      delay: 0.1,
-    },
-    {
-      icon: "💬",
-      title: "Real-time Consultation",
-      description: "Chat with AI doctors instantly and get immediate medical advice and treatment recommendations.",
-      delay: 0.2,
-    },
-    {
-      icon: "💊",
-      title: "Personalized Treatment",
-      description: "Receive customized medicine suggestions and health guidelines tailored to your specific condition.",
-      delay: 0.3,
-    },
-    {
-      icon: "📋",
-      title: "Automated Reports",
-      description: "Get comprehensive medical reports automatically generated after each consultation session.",
-      delay: 0.4,
-    },
-    {
-      icon: "🕒",
-      title: "24/7 Availability",
-      description: "Access medical consultation anytime, anywhere with our round-the-clock AI doctor service.",
-      delay: 0.5,
-    },
-    {
-      icon: "🔒",
-      title: "Secure & Private",
-      description: "Your health data is protected with enterprise-grade security and complete privacy assurance.",
-      delay: 0.6,
-    },
-  ];
-
+  
   return (
     <section className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4">

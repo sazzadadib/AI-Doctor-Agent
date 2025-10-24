@@ -1,58 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
+import { testimonials } from "@/data/homepage";
 
 export default function TestimonialsSection() {
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Working Professional",
-      avatar: "👩‍💼",
-      rating: 5,
-      text: "Amazing experience! The AI doctor understood my symptoms perfectly and provided accurate medication recommendations. The automated report was so detailed and helpful.",
-      delay: 0.1,
-    },
-    {
-      name: "Michael Chen",
-      role: "Student",
-      avatar: "👨‍🎓",
-      rating: 5,
-      text: "As a student with limited time, this service is a lifesaver. Quick consultations, expert advice, and I can access it anytime. Highly recommended!",
-      delay: 0.2,
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Mother of Two",
-      avatar: "👩‍👧‍👦",
-      rating: 5,
-      text: "Perfect for busy parents! When my kids have minor health issues, I can get quick professional advice without waiting for appointments. The doctors are very knowledgeable.",
-      delay: 0.3,
-    },
-    {
-      name: "David Wilson",
-      role: "Senior Citizen",
-      avatar: "👴",
-      rating: 5,
-      text: "The interface is so easy to use, and the doctors are patient with all my questions. The follow-up guidelines in the report help me stay on track with my treatment.",
-      delay: 0.4,
-    },
-    {
-      name: "Lisa Thompson",
-      role: "Healthcare Worker",
-      avatar: "👩‍⚕️",
-      rating: 5,
-      text: "Even as a healthcare professional, I use this service for quick consultations. The AI is remarkably accurate and the specialist matching feature is excellent.",
-      delay: 0.5,
-    },
-    {
-      name: "Alex Kumar",
-      role: "Tech Professional",
-      avatar: "👨‍💻",
-      rating: 5,
-      text: "The technology is impressive! Real-time consultations feel natural and the automated reporting system saves so much time. Great innovation in healthcare.",
-      delay: 0.6,
-    },
-  ];
+  
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
